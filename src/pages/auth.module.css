@@ -1,0 +1,230 @@
+/* src/pages/auth.module.css */
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  background: radial-gradient(circle at center, rgba(56, 189, 248, 0.15) 0%, rgba(59, 130, 246, 0.05) 50%, var(--bg) 100%);
+}
+
+:global([data-theme="dark"]) .page {
+  background: radial-gradient(circle at center, rgba(56, 189, 248, 0.1) 0%, rgba(59, 130, 246, 0.05) 50%, var(--bg) 100%);
+}
+
+
+/* Card */
+
+.card {
+  background: rgba(255, 255, 255, 0.95); /* Putih bersih tanpa gradasi */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 16px;
+  padding: 36px 40px;
+  width: 100%;
+  max-width: 440px;
+  position: relative; /* Agar card berada di atas canvas */
+  z-index: 10; 
+  box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+}
+
+/* Glassmorphism di Mode Gelap */
+:global([data-theme="dark"]) .card {
+  /* Efek Kaca Putih transparan pekat tanpa gradasi */
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25); /* Border dibikin lebih putih dan tegas */
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+.logoIcon {
+  width: 38px; height: 38px;
+  background: #fde8eb;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  color: #e63950;
+  flex-shrink: 0;
+}
+.logoName    { font-weight: 700; font-size: 16px; color: #1a1d23; letter-spacing: -0.3px; }
+.logoTagline { font-size: 10.5px; color: #9aa0ad; margin-top: 1px; }
+
+:global([data-theme="dark"]) .logoName {
+  color: #fff; /* Ubah warna teks logoName di mode gelap */
+}
+/* Heading */
+.heading { font-size: 21px; font-weight: 700; color: #1a1d23; letter-spacing: -0.5px; margin-bottom: 5px; }
+:global([data-theme="dark"]) .heading {
+  color: #fff; /* Ubah warna teks heading di mode gelap */
+}
+.subheading { font-size: 13px; color: #9aa0ad; margin-bottom: 28px; }
+:global([data-theme="dark"]) .subheading {
+  color: #ddd; /* Ubah warna teks subheading di mode gelap */
+}
+
+/* Footer link */
+.footerText {
+  text-align: center;
+  font-size: 13px;
+  color: #9aa0ad;
+}
+:global([data-theme="dark"]) .footerText {
+  color: #ddd; /* Ubah warna teks footer di mode gelap */
+}
+
+/* Form */
+.formGroup { display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; }
+.label { font-size: 12px; font-weight: 500; color: #5c6270; }
+:global([data-theme="dark"]) .label {
+  color: #ddd; /* Ubah warna label di mode gelap */
+}
+.input {
+  padding: 10px 13px;
+  border: 1px solid #d0d4dc;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-family: 'DM Sans', sans-serif;
+  color: #1a1d23;
+  background: #ffffff;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  outline: none;
+}
+.input:focus {
+  border-color: #e63950;
+  box-shadow: 0 0 0 3px rgba(230,57,80,0.1);
+}
+.input.error { border-color: #dc2626; }
+.input::placeholder { color: #c5c9d1; }
+
+.inputWrap { position: relative; }
+.inputWrap .input { width: 100%; padding-right: 40px; }
+.eyeBtn {
+  position: absolute; right: 11px; top: 50%; transform: translateY(-50%);
+  background: none; border: none; cursor: pointer; color: #9aa0ad;
+  display: flex; align-items: center; padding: 2px;
+}
+.eyeBtn:hover { color: #5c6270; }
+
+/* Row of two fields */
+.formRow { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+/* Error message under field */
+.fieldError { font-size: 11.5px; color: #dc2626; margin-top: 3px; }
+
+/* Global error banner */
+.errorBanner {
+  background: #fee2e2;
+  border: 1px solid rgba(220,38,38,0.25);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 12.5px;
+  color: #dc2626;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+/* Success banner */
+.successBanner {
+  background: #dcfce7;
+  border: 1px solid rgba(22,163,74,0.25);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 12.5px;
+  color: #16a34a;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+/* Submit button */
+.submitBtn {
+  width: 100%;
+  padding: 11px;
+  border-radius: 9px;
+  background: #e63950;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'DM Sans', sans-serif;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.submitBtn:hover:not(:disabled) { background: #cc2e41; }
+.submitBtn:active:not(:disabled) { transform: scale(0.985); }
+.submitBtn:disabled { opacity: 0.65; cursor: not-allowed; }
+
+/* Spinner inside button */
+.btnSpinner {
+  width: 16px; height: 16px;
+  border: 2px solid rgba(255,255,255,0.35);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Divider */
+.divider {
+  display: flex; align-items: center; gap: 12px;
+  margin: 20px 0; color: #c5c9d1; font-size: 12px;
+}
+.divider::before, .divider::after {
+  content: ''; flex: 1; height: 1px; background: #e2e5eb;
+}
+
+/* Footer link */
+.footerText {
+  text-align: center;
+  font-size: 13px;
+  color: #9aa0ad;
+  margin-top: 20px;
+}
+.footerText a, .footerText button {
+  color: #e63950;
+  font-weight: 600;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  font-family: inherit;
+  padding: 0;
+  text-decoration: none;
+}
+.footerText a:hover, .footerText button:hover { text-decoration: underline; }
+
+/* Password strength bar */
+.strengthWrap { margin-top: 6px; }
+.strengthBar  { height: 3px; border-radius: 2px; background: #eef0f4; overflow: hidden; }
+.strengthFill { height: 100%; border-radius: 2px; transition: width 0.3s, background 0.3s; }
+.strengthLabel { font-size: 11px; color: #9aa0ad; margin-top: 3px; }
+
+/* Checkbox row */
+.checkRow {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12.5px; color: #5c6270; margin-bottom: 14px;
+}
+:global([data-theme="dark"]) .checkRow {
+  color: #ddd; /* Ubah warna teks checkRow di mode gelap */
+}
+.checkRow input[type="checkbox"] { accent-color: #e63950; width: 14px; height: 14px; cursor: pointer; }
+.checkRow a { color: #e63950; font-weight: 500; }
